@@ -13,7 +13,8 @@ def prever():
         hora, minuto = map(int, hora_do_dia.split(':'))
         hora_do_dia = hora + minuto / 60
 
-        df = pd.read_csv(r"D:\nilza.csv", sep=';')
+        url = "https://eduardomppp.github.io/projeto_saude/nilza.csv"  # substitua pelo seu URL
+        df = pd.read_csv(url, sep=';')
         df = df.replace(',', '.', regex=True)
         df['hora_do_dia'] = pd.to_datetime(df['hora_do_dia'], format='%H:%M', errors='coerce').dt.hour + pd.to_datetime(df['hora_do_dia'], format='%H:%M', errors='coerce').dt.minute / 60
         df.dropna(subset=['insulina'], inplace=True)
